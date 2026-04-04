@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 
+
 app = Flask(__name__)
 
 
@@ -11,7 +12,17 @@ def health():
 @app.route('/sum', methods=['POST'])
 def get_sum():
     data = request.get_json()
-    result = data.get('a', 0) + data.get('b', 0)
+
+    if not data:
+        return jsonify({"error": "Invalid input"}), 400
+
+    a = data.get('a', 0)
+    b = data.get('b', 0)
+
+    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+        return jsonify({"error": "Inputs must be numbers"}), 400
+
+    result = a + b
     return jsonify({"result": result})
 
 
