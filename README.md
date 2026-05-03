@@ -1,27 +1,72 @@
-# GitOps Capstone Project
+# 🚀 GitOps CI/CD Workflow with Automated Quality Enforcement
 
-## Project Overview
-This project demonstrates a GitOps workflow with Trello, GitHub, and GitHub Actions. 
-It automates linting, testing, and onboarding for new developers.
+## 📌 Overview
 
-## Architecture
-- **app.py** → Flask API
-- **test_app.py** → Unit tests with pytest
-- **.github/workflows/ci.yml** → CI pipeline (Install → Lint → Test)
+This project implements a GitOps-based development workflow designed to improve code quality, team visibility, and developer onboarding speed.
 
-## Workflow Description
-- Branch strategy: `main` = stable, feature branches = TRELLO-###
-- PRs required for merge, linked to Trello cards
-- CI pipeline ensures quality (lint + test)
-- Minimum 3 PRs, 8 commits
+It integrates task tracking, source control, and automation to ensure that all code changes are validated through linting and testing before being merged.
 
-## Commit Conventions
-- `[TRELLO-###] Short description` format
-- Example: `[TRELLO-002] Add input validation for /sum endpoint`
 
-## Setup Instructions
-1. Install Python 3.14
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run tests: `pytest -v test_app.py`
-4. Run the app: `python app.py`# gitops-capstone-project
-DevOps GitOps workflow with CI/CD automation
+## 🧱 Architecture
+
+* **Flask API** (`app.py`) – Lightweight service with multiple endpoints
+* **Pytest** (`test_app.py`) – Automated unit testing
+* **GitHub Actions** – CI pipeline (Install → Lint → Test)
+* **Trello** – Task tracking and workflow management
+
+
+## 🔁 Workflow Design
+
+* `main` branch remains stable at all times
+* Feature branches follow: `feature/TRELLO-###-description`
+* All changes go through Pull Requests
+* Each PR is linked to a Trello task
+* CI pipeline enforces code quality before merge
+
+
+## ⚙️ CI/CD Pipeline
+
+The pipeline runs automatically on:
+
+* Push to feature branches
+* Pull Requests to main
+
+Stages:
+
+1. Install dependencies
+2. Lint code using flake8
+3. Run tests using pytest
+
+🚫 Any failure blocks merge into main
+
+
+## 🧾 Commit Convention
+
+All commits follow:
+[TRELLO-###] Short description
+
+Example:
+[TRELLO-002] Add input validation for /sum endpoint
+
+
+## 🚀 Getting Started
+
+```bash
+pip install -r requirements.txt
+pytest -v test_app.py
+python app.py
+```
+
+
+## 📄 Documentation
+
+Detailed documentation (workflow decisions, onboarding, and engineering reasoning) is available in:
+https://docs.google.com/document/d/1Lsn9Iw96NX8UejQhcAGAI7WIEIvOyOftNs4a58YjIAQ/edit?usp=sharing
+
+
+## 🎯 Key Outcomes
+
+* Enforced code quality through CI automation
+* Improved team workflow visibility via GitOps
+* Structured onboarding process for new developers
+
